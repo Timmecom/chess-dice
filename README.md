@@ -2,13 +2,13 @@
 
 A web-based chess opening move randomizer that uses a virtual 20-sided die to determine your first move in a chess game.
 
-![Chess Dice Game Screenshot](https://example.com/screenshot.png)
+![Chess Dice Game Screenshot](sample_chess_dice_image.png)
 
 ## Overview
 
 Chess Dice Game offers a fun and unpredictable way to start your chess games. Roll a virtual 20-sided die and get a randomly selected opening move for either white or black pieces. The app shows the move on an interactive chessboard with animations, helping players visualize the opening position.
 
-This project was inspired by Magnus Carlsen's Titled Tuesday stream on March 18, 2025, where the World Chess Champion experimented with random opening moves.
+This project was inspired by Magnus Carlsen's Titled Tuesday stream on March 18, 2025, where the 16th World Chess Champion experimented with random opening moves.
 
 ## Features
 
@@ -40,6 +40,19 @@ The randomizer includes 20 possible opening moves for each color:
 - 4 knight moves (the only other piece that can move on the first turn)
 
 All moves follow standard chess rules for opening positions.
+
+## Future Improvements
+
+Here are some potential features and improvements that could be added in future updates:
+
+1. **Weighted Probabilities**: Adjust the probability of each move based on statistical data from master games or popular opening theory
+2. **Custom Weighting**: Allow users to manually adjust the probabilities of certain moves to favor specific openings
+3. **Opening Names**: Display the chess opening name that corresponds to the selected move
+4. **Statistical Insights**: Show win rates and popularity of each opening move based on chess databases
+5. **Position Evaluation**: Add engine evaluation of the position after the move
+6. **Move Export**: Allow exporting the selected move in PGN format
+7. **User Accounts**: Save favorite moves or custom probability settings
+8. **Puzzle Integration**: Suggest puzzles that arise from the selected opening
 
 ## Technical Details
 

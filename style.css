@@ -404,19 +404,27 @@ body {
     }
     
     .header {
-        padding: 0.5rem 0.5rem; /* Reduced padding */
+        padding: 0.5rem;
+        justify-content: flex-start;
+    }
+    
+    .header-content {
+        margin: 0;
+        justify-content: flex-start;
+    }
+    
+    .subtitle {
+        display: none; /* Hide subtitle on very small screens */
+    }
+    
+    .page-title {
+        font-size: clamp(16px, 3.5vw, 20px);
     }
     
     .header-buttons {
         position: absolute;
         right: 0.5rem;
         top: 0.5rem;
-    }
-    
-    .theme-switch, .credits-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 18px;
     }
     
     .container, .chessboard-container {
