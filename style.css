@@ -407,13 +407,16 @@ body {
         padding: 0.5rem 0.5rem; /* Reduced padding */
     }
     
-    .theme-switch, .credits-btn {
+    .header-buttons {
+        position: absolute;
         right: 0.5rem;
+        top: 0.5rem;
+    }
+    
+    .theme-switch, .credits-btn {
         width: 35px;
         height: 35px;
         font-size: 18px;
-        position: absolute; /* Ensure position is absolute */
-        top: 0.5rem; /* Add top position */
     }
     
     .container, .chessboard-container {
