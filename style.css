@@ -68,6 +68,48 @@
     --die-color: #d00000;
 }
 
+html.dark-mode,
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --title-color: #90caf9;
+    --white-square: #8b8b83;
+    --black-square: #595959;
+    --highlight-color: rgba(255, 255, 0, 0.3);
+    --highlight-move: rgba(0, 255, 0, 0.3);
+    --modal-bg: #1e1e1e;
+    --modal-text: #e0e0e0;
+    --table-border: #444;
+    --table-header: #2c2c2c;
+    --btn-bg: #2979ff;
+    --btn-text: white;
+    --die-color: #e53935;
+    --border-color: rgba(255,255,255,0.1); /* Add border color for dark mode */
+    --black-piece-color: #000; /* Define black piece color */
+    --white-piece-color: #fff; /* Define white piece color */
+}
+
+html.light-mode,
+body.light-mode {
+    --bg-color: #f5f5f5;
+    --text-color: #333;
+    --title-color: #2c3e50;
+    --white-square: #f0d9b5;
+    --black-square: #b58863;
+    --highlight-color: rgba(255, 255, 0, 0.4);
+    --highlight-move: rgba(0, 255, 0, 0.4);
+    --modal-bg: white;
+    --modal-text: #333;
+    --table-border: #ddd;
+    --table-header: #f2f2f2;
+    --btn-bg: #3498db;
+    --btn-text: white;
+    --die-color: #d00000;
+    --border-color: rgba(0,0,0,0.1); /* Add border color for light mode */
+    --black-piece-color: #000; /* Define black piece color */
+    --white-piece-color: #fff; /* Define white piece color */
+}
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -91,13 +133,14 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    padding: 0.5rem 0;
+    padding: 0.5rem 1rem;
     background-color: var(--bg-color);
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid var(--border-color); /* Use the variable instead of hardcoded color */
     z-index: 10;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    box-sizing: border-box; /* Add this to ensure padding is included in width calculation */
 }
 
 .title-container {
@@ -125,6 +168,7 @@ body {
 .header-content {
     display: flex;
     align-items: center;
+    margin: 0 auto;
 }
 
 .page-title {
@@ -139,10 +183,13 @@ body {
     margin: 0.2rem 0 0 0;
 }
 
-.theme-switch {
-    position: fixed; /* Changed from absolute to fixed */
-    top: 1rem;
-    right: 1rem;
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.theme-switch, .credits-btn {
     background: var(--btn-bg);
     color: var(--btn-text);
     border: none;
@@ -155,6 +202,7 @@ body {
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 20; /* Ensure button is above other elements */
 }
 
 .container {
@@ -270,6 +318,45 @@ body {
     cursor: default;
 }
 
+/* Style black pieces specifically */
+.piece[data-piece="♟"], 
+.piece[data-piece="♜"], 
+.piece[data-piece="♞"], 
+.piece[data-piece="♝"], 
+.piece[data-piece="♛"], 
+.piece[data-piece="♚"] {
+    color: var(--black-piece-color);
+}
+
+/* Style white pieces specifically */
+.piece[data-piece="♙"], 
+.piece[data-piece="♖"], 
+.piece[data-piece="♘"], 
+.piece[data-piece="♗"], 
+.piece[data-piece="♕"], 
+.piece[data-piece="♔"] {
+    color: var(--white-piece-color);
+}
+
+/* Adjust dark mode styles for pieces */
+.dark-mode .piece[data-piece="♟"], 
+.dark-mode .piece[data-piece="♜"], 
+.dark-mode .piece[data-piece="♞"], 
+.dark-mode .piece[data-piece="♝"], 
+.dark-mode .piece[data-piece="♛"], 
+.dark-mode .piece[data-piece="♚"] {
+    color: #333; /* Darker but not fully black for visibility */
+}
+
+.dark-mode .piece[data-piece="♙"], 
+.dark-mode .piece[data-piece="♖"], 
+.dark-mode .piece[data-piece="♘"], 
+.dark-mode .piece[data-piece="♗"], 
+.dark-mode .piece[data-piece="♕"], 
+.dark-mode .piece[data-piece="♔"] {
+    color: #fff; /* Pure white for white pieces */
+}
+
 .highlight {
     background-color: var(--highlight-color) !important;
 }
@@ -312,8 +399,21 @@ body {
 
 @media (max-width: 767px) {
     body {
-        padding-top: 2rem;
+        padding-top: 4rem; /* Increased padding to prevent overlap */
         justify-content: flex-start;
+    }
+    
+    .header {
+        padding: 0.5rem 0.5rem; /* Reduced padding */
+    }
+    
+    .theme-switch, .credits-btn {
+        right: 0.5rem;
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+        position: absolute; /* Ensure position is absolute */
+        top: 0.5rem; /* Add top position */
     }
     
     .container, .chessboard-container {
@@ -322,6 +422,14 @@ body {
     
     .result {
         margin-bottom: 1rem;
+    }
+    
+    .container {
+        margin-top: 1rem; /* Added margin to move content down on mobile */
+    }
+    
+    .roll-text {
+        margin-top: 0.5rem; /* Added margin to prevent overlap with header */
     }
 }
 
@@ -388,4 +496,40 @@ body {
 
 .rules-table th {
     background-color: var(--table-header);
+}
+
+/* Credits popup styles */
+.credits-content {
+    max-width: 500px;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    justify-content: center;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.social-link:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.copyright {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    text-align: center;
+    opacity: 0.7;
 }

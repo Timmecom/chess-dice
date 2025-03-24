@@ -15,6 +15,11 @@ const closeRules = document.getElementById('close-rules');
 const whiteRulesBody = document.getElementById('white-rules-body');
 const blackRulesBody = document.getElementById('black-rules-body');
 
+// Credits elements
+const creditsBtn = document.getElementById('credits-btn');
+const creditsModal = document.getElementById('credits-modal');
+const closeCredits = document.getElementById('close-credits');
+
 let dieValue = 0;
 let selectedColor = '';
 
@@ -79,6 +84,8 @@ function getPreferredTheme() {
 
 // Apply theme based on preference
 function applyTheme(theme) {
+    document.documentElement.classList.remove('light-mode', 'dark-mode');
+    document.documentElement.classList.add(theme + '-mode');
     document.body.classList.remove('light-mode', 'dark-mode');
     document.body.classList.add(theme + '-mode');
     themeSwitch.textContent = theme === 'dark' ? '☀️' : '🌙';
@@ -90,6 +97,15 @@ function initTheme() {
     const savedTheme = localStorage.getItem('chess-dice-theme');
     const preferredTheme = savedTheme || getPreferredTheme();
     applyTheme(preferredTheme);
+    
+    // Listen for system preference changes
+    if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!localStorage.getItem('chess-dice-theme')) {
+                applyTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+    }
 }
 
 // Theme toggle
@@ -252,10 +268,22 @@ closeRules.addEventListener('click', function() {
     rulesModal.style.display = 'none';
 });
 
-// Close modal if clicked outside
+// Credits modal functionality
+creditsBtn.addEventListener('click', function() {
+    creditsModal.style.display = 'block';
+});
+
+closeCredits.addEventListener('click', function() {
+    creditsModal.style.display = 'none';
+});
+
+// Close modal if clicked outside - update to handle both modals
 window.addEventListener('click', function(event) {
     if (event.target === rulesModal) {
         rulesModal.style.display = 'none';
+    }
+    if (event.target === creditsModal) {
+        creditsModal.style.display = 'none';
     }
 });
 

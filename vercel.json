@@ -1,0 +1,10 @@
+{
+  "name": "chess-dice",
+  "version": 2,
+  "builds": [
+    {
+      "src": "**/*",
+      "use": "@vercel/static"
+    }
+  ]
+}

@@ -4,13 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
     <title>Chess Dice Game</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Prevent theme flash -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('chess-dice-theme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+            document.documentElement.classList.add(theme + '-mode');
+        })();
+    </script>
 </head>
 
 <body>
-    <button class="theme-switch" id="theme-switch">☀️</button>
-    
     <div class="header">
         <div class="header-content">
             <div class="logo-container">
@@ -22,6 +31,10 @@
                 <h1 class="page-title">Chess Dice Game</h1>
                 <p class="subtitle">Roll a d20 to determine your first move</p>
             </div>
+        </div>
+        <div class="header-buttons">
+            <button class="credits-btn" id="credits-btn" title="About/Credits"><i class="fas fa-info-circle"></i></button>
+            <button class="theme-switch" id="theme-switch">☀️</button>
         </div>
     </div>
 
@@ -83,6 +96,26 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
+
+    <!-- Credits Modal -->
+    <div class="modal" id="credits-modal">
+        <div class="modal-content credits-content">
+            <span class="close-btn" id="close-credits">&times;</span>
+            <h2>About / Credits</h2>
+            <p>This random chess opening move generator was inspired by Magnus Carlsen's Titled Tuesday stream on March 18, 2025.</p>
+            
+            <div class="social-links">
+                <a href="https://linkedin.com/in/timmecom" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="mailto:oluyoyin2000@gmail.com" class="social-link">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+            </div>
+            
+            <p class="copyright">© 2025 Emmanuel Oluyoyin. All rights reserved.</p>
         </div>
     </div>
 
