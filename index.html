@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Dice Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button class="theme-switch" id="theme-switch">☀️</button>
+    
+    <div class="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272.32516 313.38947">
+                    <path d="m 379.93009,375.66819 c -0.57042,0.0194 -1.22613,0.22811 -1.58536,0.73174 l -80.67309,96.52739 c -1.34246,1.68064 -1.43314,2.05568 0.3659,2.07325 l 161.59017,-0.42695 c 2.22078,-0.18146 2.23054,-0.0702 0.79265,-1.95128 l -79.2707,-96.52721 c -0.16389,-0.25521 -0.64874,-0.44097 -1.21957,-0.42694 z m 15.48842,8.59792 72.74609,88.47818 c 0.97444,1.1817 1.21194,1.24884 2.92697,0.42695 l 38.35462,-17.56151 c 2.51233,-1.13388 2.1642,-1.3661 0.48784,-2.50017 L 395.41851,384.26611 z m -33.96442,3.23171 c -0.034,-0.0722 -0.6255,0.36995 -1.95133,1.28062 l -105.61284,69.5143 33.04973,15.00045 c 1.72413,0.56842 2.23917,0.59885 3.35363,-0.79279 l 69.6974,-83.23414 c 0.98238,-1.13662 1.49615,-1.69624 1.46341,-1.76844 z" transform="translate(-246.69456,-375.66745)"/>
+                </svg>
+            </div>
+            <div class="title-container">
+                <h1 class="page-title">Chess Dice Game</h1>
+                <p class="subtitle">Roll a d20 to determine your first move</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="roll-text">Roll the 20-sided die</div>
+        <div class="die" id="die-container">
+            <span id="die-number">Roll</span>
+        </div>
+        <div class="color-selection" id="color-selection">
+            <p>Select a color:</p>
+            <button class="color-btn" id="white-btn">White</button>
+            <button class="color-btn" id="black-btn">Black</button>
+        </div>
+        <div class="result" id="result"></div>
+        <button class="rules-btn" id="rules-btn">View Rules</button>
+    </div>
+
+    <div class="chessboard-container" id="chessboard-container">
+        <div class="chessboard" id="chessboard"></div>
+    </div>
+
+    <!-- Rules Modal -->
+    <div class="modal" id="rules-modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-rules">&times;</span>
+            <h2>Chess Dice Rules</h2>
+            <p>Each number on the 20-sided die corresponds to a specific chess move. The current mappings are:</p>
+            
+            <div id="rules-tables-container">
+                <h3>White Moves</h3>
+                <table class="rules-table" id="white-rules-table">
+                    <thead>
+                        <tr>
+                            <th>Die Roll</th>
+                            <th>Piece</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="white-rules-body">
+                        <!-- This will be filled by JavaScript -->
+                    </tbody>
+                </table>
+                
+                <h3>Black Moves</h3>
+                <table class="rules-table" id="black-rules-table">
+                    <thead>
+                        <tr>
+                            <th>Die Roll</th>
+                            <th>Piece</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="black-rules-body">
+                        <!-- This will be filled by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
